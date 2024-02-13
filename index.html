@@ -1,17 +1,69 @@
 <!doctype html>
 <html>
   <head>
-    <script type="application/javascript" src="script.js">
+      <link href="style.css" rel="stylesheet" />
+    </head>
+    <body onload="draw();">
+        <div class="container-iphone">        
+            <h1 id="h1-ask">Ты меня любишь?</h1>
+            <div id="main-image">
+                <img src="image/grustno-pizdez.jpg" id="hom">
+            </div>
+            <div class="ask">
+                <button class="yes" onclick="yes()">ДА!</button>
+                <button id="no" onclick="no()">нет...</button>
+            </div>
+        </div>
+        <script type="application/javascript">
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
 
-    </script>
-    <style>
-        #canvas 
-        {
-            border: 1px solid black;
-        }
-    </style>
-  </head>
-  <body onload="draw();">
-    <canvas id="canvas" width="414" height="736"></canvas>
+            function no() {
+                let header = document.getElementById("h1-ask");
+                header.textContent = 'Это риторический вопрос';
+                header.style.top = "150px";
+                header.style.left = "70px";
+
+                let image = document.getElementById("hom");
+                image.src = 'image/papuga.jpg'; 
+
+
+                let container_image = document.getElementById("main-image");
+                container_image.style.top = "300px";
+                container_image.style.left = "150px";
+                
+                let button = document.getElementById("no");
+                button.style.position = "absolute";
+                button.style.top = getRandomInt(-200, 100).toString() + "px";
+                button.style.left = getRandomInt(-150, 100).toString() + "px";
+
+                console.log("event no");
+            }
+
+            function yes() {
+                let header = document.getElementById("h1-ask");
+                header.textContent = "И я тебя люблю! <3";
+                header.style.top = "70px";
+                header.style.left = "20px";
+                
+                let image = document.getElementById("hom");
+                image.src = 'image/cat.gif';
+                
+                let container_image = document.getElementById("main-image");
+                container_image.style.left = "20px";
+                container_image.style.top = "150px";
+
+                let button = document.getElementById("no");
+                button.style.position = "absolute";
+                button.style.top = "0px"
+                button.style.left = "60px";
+
+
+                console.log("event yes");
+            }   
+        </script>
   </body>
 </html>
